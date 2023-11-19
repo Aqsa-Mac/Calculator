@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import './App.css';
+import Home from "./Pages/Home";
+import QuestionnairePopup from "./Components/QuestionnairePopup";
+import Screen1 from "./Components/Screen1";
+import Calendar from "./Components/CustomCalendar";
 
 function App() {
+  const route = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [route]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    <div className="min-h-screen">
+     <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/questionnairepopup" element={<QuestionnairePopup/>}/>
+      <Route path="/screen1" element={<Screen1/>}/>
+      <Route path="/calendar" element={<Calendar/>}/>
+     
+     </Routes>
     </div>
   );
 }
